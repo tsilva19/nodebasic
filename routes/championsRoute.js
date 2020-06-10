@@ -47,6 +47,13 @@ const championRouter = (app) => {
 
             res.status(200).send("Campeao Atualizado")
         })
+        .delete((req, res ) => {
+            const champions = getChampions()
+            saveChampion(champions.filter(
+                champion => champion.id !== req.params.id))
+
+                res.status(200).send('OK')
+        })
 }
 
 module.exports = championRouter
